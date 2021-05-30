@@ -1,4 +1,4 @@
-package com.example.rest.restfulwebservices;
+package com.example.rest.restfulwebservices.dao;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -41,6 +41,13 @@ public class UserDaoService {
 		}
 		users.add(user);
 		return user;
+	}
+	
+	public void remove(int id) {
+		User user = findById(id);
+		if(user != null) {
+			users.remove(user);
+		}
 	}
 	
 }
