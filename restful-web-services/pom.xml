@@ -48,6 +48,13 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+		
+		<!-- convert input/output to xml format -->
+		<!-- <dependency>
+			<groupId>com.fasterxml.jackson.dataformat</groupId>
+			<artifactId>jackson-dataformat-xml</artifactId>
+		</dependency> -->
+	
 	</dependencies>
 
 	<build>

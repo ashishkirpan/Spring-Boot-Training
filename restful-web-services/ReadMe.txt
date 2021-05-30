@@ -1,12 +1,14 @@
+Day-1
+******
 https://start.spring.io/
 
 Group - com.exmaple.rest
-Aftifact ID - restful-web-services
+Artifact ID - restful-web-services
 Spring version - 2.3.11
 
 Dependencies
 	Web	- all web dependencies	
-	Dev Tools - developemental dependencies
+	Dev Tools - developmental dependencies
 	JPA - Spring Data JPA
 	H2 - H2 Database dependencies
 
@@ -19,7 +21,7 @@ Chrome Plugin - JSON Viewer
 ---
 What is dispatcher servlet?
 Who is configuring dispatcher servlet?
-	- Spring boot autoconfiguration
+	- Spring boot auto configuration
 	- Is DispatcherServlet avail...if yes then go ahead and configure this DispatcherServlet
 		
 What does dispatcher servlet do?
@@ -35,3 +37,41 @@ How does your HelloWorldBean converted to JSON?
 	
 Who is configuring the error mapping?
 	- ErrorMvcAutoConfiguration
+
+Day 2
+*****
+convert input/output to xml format
+		<dependency>
+			<groupId>com.fasterxml.jackson.dataformat</groupId>
+			<artifactId>jackson-dataformat-xml</artifactId>
+		</dependency>
+	
+Path Variable
+	http://localhost:8080/hello-world-path-variable/Mike
+
+	https://github.com/ashishkirpan/Spring-Boot-Training
+	https://github.com/ashishkirpan/Spring-Boot-Hello
+
+
+Rest web service - Resource
+	Social Media
+		User --> Post
+
+Operation / API's 
+- Retrieve all users	-	GET /users 	
+- Create a User			-	POST /users
+- Get single User		-	GET /users/{id}		- /users/101
+- Delete a User			-	DELETE /users/{id}	- /users/102
+
+- Retrieve all post for a User			-	GET /users/{id}/posts
+- Create post for a User				- 	POST /users/{id}/posts	
+- Retrieve details for a post(single)	-	GET /users/{id}/posts/{post_id}
+
+- Top-Down approach
+- Bottom-Up approach
+
+https://httpstatuses.com/
+
+
+
+
