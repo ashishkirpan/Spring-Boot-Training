@@ -13,8 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.rest.restfulwebservices.bean.Post;
 import com.example.rest.restfulwebservices.bean.User;
-import com.example.rest.restfulwebservices.dao.UserDaoService;
+import com.example.rest.restfulwebservices.dao.PostRepository;
 import com.example.rest.restfulwebservices.dao.UserRepository;
 
 import io.swagger.v3.oas.annotations.Parameter;
@@ -25,10 +26,10 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 public class UserJPAController {
 
 	@Autowired
-	private UserDaoService userDaoService;
+	private UserRepository userRepository;
 	
 	@Autowired
-	private UserRepository userRepository;
+	private PostRepository postRepository;
 	
 	//GET /users
 	//retriveAllUsers
@@ -69,4 +70,25 @@ public class UserJPAController {
 		userRepository.deleteById(id);
 		return new ResponseEntity<User>(HttpStatus.NO_CONTENT);
 	}
+	
+	@GetMapping(path = "/jpa/users/{id}/posts")
+	public List<Post> retriveUserPosts(@PathVariable int id) {
+		Optional<User> user = userRepository.findById(id);
+		return user.get().getPosts();
+	}
+	
+	@PostMapping(path = "/users/{id}/posts")
+	public ResponseEntity<Post> savePost(@PathVariable int id, @RequestBody Post post) {
+		
+		Optional<User> user = userRepository.findById(id);
+		if(!user.isPresent()) {
+			new ResponseEntity<Post>(HttpStatus.INTERNAL_SERVER_ERROR);
+		} else {
+			post.setUser(user.get());
+			postRepository.save(post);
+		}
+		
+		return new ResponseEntity<Post>(post, HttpStatus.CREATED);
+	}
+	
 }
